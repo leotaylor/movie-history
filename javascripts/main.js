@@ -1,1 +1,3 @@
-console.log('howdy');
+const events = require('./events');
+
+events.myLinks();
