@@ -1,16 +1,4 @@
-
-// const myLinks = (e) => {
-//   const links = $(e.target).html();
-//   console.log(links);
-//   $('#authScreen #search #myMovies').hide();
-//   if (links === 'Authentication') {
-//     $('#authScreen').toggle();
-//   } else if (links === 'My Movies') {
-//     $('#myMovies').toggle();
-//   } else if (links === 'Search') {
-//     $('#search').toggle();
-//   };
-// };
+const tmdb = require('./tmdb');
 
 const myLinks = () => {
   $(document).click((e) => {
@@ -30,6 +18,15 @@ const myLinks = () => {
   });
 };
 
+const pressEnter = () => {
+  tmdb.showResults();
+};
+
+const initializer = () => {
+  myLinks();
+  pressEnter();
+};
+
 module.exports = {
-  myLinks,
+  initializer,
 };
