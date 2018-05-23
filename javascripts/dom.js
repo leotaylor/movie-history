@@ -6,7 +6,7 @@ const domString = (movieArray) => {
     strang +=     `<img src="..." alt="...">`;
     strang +=     `<div class="caption">`;
     strang +=       `<h3>${movie.original_title}</h3>`;
-    strang +=       `<p>.${movie.overview}</p>`;
+    strang +=       `<p>${movie.overview}</p>`;
     strang +=       `<p><a href="#" class="btn btn-primary" role="button">Review</a> <a href="#" class="btn btn-default" role="button">Wishlist</a></p>`;
     strang +=     `</div>`;
     strang +=   `</div>`;
