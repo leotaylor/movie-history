@@ -1,5 +1,6 @@
 /* eslint camelcase: 0 */
 
+const dom = require('./dom');
 const tmdb = require('./tmdb');
 const firebaseApi = require('./firebaseAPI');
 
@@ -54,9 +55,7 @@ const saveMovieToWishlistEvent = () => {
 const getAllMoviesEvent = () => {
   firebaseApi.getAllMovies()
     .then((moviesArray) => {
-      moviesArray.forEach((movie) => {
-        $('#savedMovies').append(movie.title);
-      });
+      dom.domString(moviesArray, tmdb.getImageConfig(), 'savedMovies');
     })
     .catch((error) => {
       console.error('error in get all movies', error);
