@@ -70,7 +70,28 @@ const deleteMovieFromFirebase = () => {
         getAllMoviesEvent();
       })
       .catch((error) => {
-        console.error('error on repopulating after delete', error);
+        console.error('error on delete', error);
+      });
+  });
+};
+
+const updateMovieEvent = () => {
+  $(document).on('click', '.updateMovieToWatched', (e) => {
+    const movieToUpdateId = $(e.target).closest('.movie').data('firebaseId');
+    const movieToUpdateCard = $(e.target).closest('.movie');
+    const updatedMovie = {
+      title: movieToUpdateCard.find('.movie-title').text(),
+      overview: movieToUpdateCard.find('.movie-overview').text(),
+      poster_path: movieToUpdateCard.find('img').data('poster'),
+      rating: 0,
+      isWatched: true,
+    };
+    firebaseApi.updateMovieToWatchedInDb(updatedMovie, movieToUpdateId)
+      .then(() => {
+        getAllMoviesEvent();
+      })
+      .catch((error) => {
+        console.error('error on update movie', error);
       });
   });
 };
@@ -80,6 +101,7 @@ const initializer = () => {
   pressEnter();
   saveMovieToWishlistEvent();
   deleteMovieFromFirebase();
+  updateMovieEvent();
 };
 
 module.exports = {
