@@ -162,6 +162,8 @@ const authEvents = () => {
       // Sign-out successful.
       $('#inputEmail').val('');
       $('#inputPassword').val('');
+      $('#movies').html('');
+      $('#searchBar').val('');
     }).catch((error) => {
       console.error(error);
     });
